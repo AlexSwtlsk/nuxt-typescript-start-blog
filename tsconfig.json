@@ -17,9 +17,12 @@
     "baseUrl": ".",
     "resolveJsonModule": true,
     "paths": {
-      "~/*": ["./*"]
+      "~/*": [
+        "./*", "@/*"
+      ]
     },
     "types": [
+      "@types/node",
       "@nuxt/types"
     ]
   }
