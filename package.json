@@ -4,8 +4,8 @@
   "version": "2.10.0",
   "private": true,
   "dependencies": {
-    "@nuxtjs/axios": "5.6.0",
     "@nuxt/typescript-runtime": "0.2.0",
+    "@nuxtjs/axios": "5.6.0",
     "frontmatter-markdown-loader": "^2.1.0",
     "nuxt": "2.10.0",
     "nuxt-property-decorator": "2.4.0",
@@ -15,9 +15,11 @@
     "dev": "nuxt-ts",
     "build": "nuxt-ts build",
     "start": "nuxt-ts start",
-    "generate": "nuxt-ts generate"
+    "generate": "nuxt-ts generate",
+    "blog": "node ./build-blog"
   },
   "devDependencies": {
-    "@nuxt/typescript-build": "0.3.0"
+    "@nuxt/typescript-build": "0.3.0",
+    "front-matter-markdown": "^0.4.3"
   }
 }

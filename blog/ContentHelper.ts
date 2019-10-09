@@ -14,7 +14,6 @@ export default class ContentHelper {
 
   constructor() {
     this.list = { fr, en };
-    console.log("this.list", this.list);
   }
 
   getBlogs(lang: string): ArticleRaw[] {

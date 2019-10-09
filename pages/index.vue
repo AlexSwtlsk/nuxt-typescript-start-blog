@@ -26,7 +26,6 @@ import Card from "~/components/Card.vue";
   },
   async asyncData(ctx) {
     const blogs = await new ContentHelper().getBlogsByPage("fr", 1, 9);
-    console.log('blogs', blogs)
     return { blogs };
   }
 })
