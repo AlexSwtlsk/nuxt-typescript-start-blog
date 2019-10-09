@@ -15,7 +15,7 @@ export interface ArticleRaw {
 }
 
 export interface ArticleData {
-  attributes: object;
+  attributes: Article;
   body: object;
   html: string;
 }
