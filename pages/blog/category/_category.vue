@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1 class="header">Home</h1>
+    <h1 class="header">Category</h1>
 
     <nuxt-link
       v-for="b in blogs" 
@@ -14,9 +14,9 @@
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
-import { ArticleRaw } from "../types";
+import { ArticleRaw } from "~/types";
 
-import ContentHelper from "../blog/ContentHelper";
+import ContentHelper from "~/blog/ContentHelper";
 
 import Card from "~/components/Card.vue";
 
@@ -24,9 +24,8 @@ import Card from "~/components/Card.vue";
   components: {
     Card
   },
-  async asyncData(ctx) {
-    const blogs = await new ContentHelper().getBlogsByPage("fr", 1, 9);
-    console.log('blogs', blogs)
+  async asyncData({params}) {
+    const blogs = await new ContentHelper().getBlogsByCategory("fr", params.category, 1, 9);
     return { blogs };
   }
 })
