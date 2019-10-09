@@ -1,5 +1,5 @@
 import { fr, en } from "./blogs.json";
-import { ArticleRaw, BlogRaw, ArticleData, Article } from "~/types/index.js";
+import { ArticleRaw, BlogRaw, ArticleData } from "~/types/index.js";
 
 export default class ContentHelper {
   private static instance: ContentHelper;
@@ -20,12 +20,12 @@ export default class ContentHelper {
     return this.list[lang];
   }
 
-  async getBlogBySlug(lang: string, slug: string): Promise<ArticleData> {
+  async getBlogBySlug(lang: string, slug: string): Promise<ArticleData | null> {
     const articleRaw = this.getBlogs(lang).find(
       (x: ArticleRaw) => x.slug === slug
     );
     if (!articleRaw) {
-      throw new Error("404");
+      return null
     }
 
     const articleData = await this.asyncImport(articleRaw.path);
