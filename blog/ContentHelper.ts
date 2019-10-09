@@ -92,9 +92,8 @@ export default class ContentHelper {
   }
 
   getPromisesImport(list: ArticleRaw[]): ArticleData[] {
-    return (list as any).map(async (blog: ArticleRaw) => {
-      const imported = await this.asyncImport(blog.path);
-      return imported as ArticleData;
+    return (list as any).map((blog: ArticleRaw) => {
+      return this.asyncImport(blog.path);
     });
   }
 
