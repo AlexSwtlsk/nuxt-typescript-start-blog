@@ -20,6 +20,8 @@
   },
   "devDependencies": {
     "@nuxt/typescript-build": "0.3.0",
-    "front-matter-markdown": "^0.4.3"
+    "front-matter-markdown": "^0.4.3",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0"
   }
 }

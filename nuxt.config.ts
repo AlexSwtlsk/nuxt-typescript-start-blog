@@ -1,6 +1,4 @@
-import NuxtConfiguration from "@nuxt/config";
 import { Configuration as WebpackConfiguration } from "webpack";
-
 import { ArticleRaw } from "./types";
 
 const { fr, en } = require("./blog/blogs.json");
@@ -13,7 +11,7 @@ export default {
   env: {},
   head,
   loading: { color: "#3B8070" },
-  css: ["~/assets/css/main.css"],
+  css: ["~/assets/scss/main.scss"],
   build: {
     extend(config: WebpackConfiguration) {
       config.module!.rules.push({
