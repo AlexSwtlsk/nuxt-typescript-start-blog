@@ -2,13 +2,7 @@
   <section>
     <h1 class="header">Category</h1>
 
-    <nuxt-link
-      v-for="b in blogs" 
-      :key="b.attributes.slug"
-      :to="`/blog/${b.attributes.slug}`"
-    >
-      {{ b.attributes.title }}
-    </nuxt-link>
+    <ArticleList :blogs="blogs" />
   </section>
 </template>
 
@@ -18,14 +12,19 @@ import { ArticleRaw } from "~/types";
 
 import ContentHelper from "~/blog/ContentHelper";
 
-import Card from "~/components/Card.vue";
+import ArticleList from "~/components/article/ArticleList.vue";
 
 @Component({
   components: {
-    Card
+    ArticleList
   },
-  async asyncData({params}) {
-    const blogs = await new ContentHelper().getBlogsByCategory("fr", params.category, 1, 9);
+  async asyncData({ params }) {
+    const blogs = await new ContentHelper().getBlogsByCategory(
+      "fr",
+      params.category,
+      1,
+      9
+    );
     return { blogs };
   }
 })
