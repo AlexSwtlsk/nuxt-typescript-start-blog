@@ -1,26 +1,19 @@
 <template>
-  <section>
-    <h1 class="header">{{ blog.attributes.title }}</h1>
-    <div>
-      Posted on
-      <nuxt-link
-        :to="{name: 'blog-category-category', params: { category: blog.attributes.category }}"
-      >{{ blog.attributes.category }}</nuxt-link>
-    </div>
-
-    <div class="content" v-html="blog.html" />
-  </section>
+  <ArticleView :blog="blog" />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
 
 import { State } from "vuex-class";
-import ContentHelper from "../../blog/ContentHelper";
-// import { Person } from "~/types";
+import ContentHelper from "~/blog/ContentHelper";
+
+import ArticleView from "~/components/article/ArticleView.vue";
 
 @Component({
-  components: {},
+  components: {
+    ArticleView
+  },
   async asyncData({ params }) {
     const blog = await new ContentHelper().getBlogBySlug("fr", params.name);
     return { blog };
