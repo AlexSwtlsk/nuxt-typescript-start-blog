@@ -28,7 +28,7 @@ import ArticleList from "~/components/article/ArticleList.vue";
     return { blogs };
   }
 })
-export default class extends Vue {
+export default class BlogCategory extends Vue {
   blogs?: ArticleRaw[];
 }
 </script>

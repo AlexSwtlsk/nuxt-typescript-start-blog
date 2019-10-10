@@ -13,7 +13,7 @@ import { Component, Prop, Vue } from "nuxt-property-decorator";
 import { ArticleData } from "~/types";
 
 @Component({})
-export default class Card extends Vue {
+export default class Meta extends Vue {
   @Prop() blog!: ArticleData;
 }
 </script>

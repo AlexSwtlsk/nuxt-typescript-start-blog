@@ -19,5 +19,5 @@ import ArticleView from "~/components/article/ArticleView.vue";
     return { blog };
   }
 })
-export default class extends Vue {}
+export default class BlogName extends Vue {}
 </script>

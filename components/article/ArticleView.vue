@@ -17,7 +17,7 @@ import Meta from "~/components/article/atoms/Meta.vue";
     Meta
   }
 })
-export default class Card extends Vue {
+export default class ArticleView extends Vue {
   @Prop() blog!: ArticleData;
 }
 </script>
