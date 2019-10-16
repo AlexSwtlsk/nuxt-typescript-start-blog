@@ -1,12 +1,9 @@
 export * from "./state";
 
-export interface Author {
-  name: string;
-}
-
 export interface BlogRaw {
   [lang: string]: ArticleRaw[];
 }
+
 
 export interface ArticleRaw {
   slug: string;
@@ -24,8 +21,8 @@ export interface Article {
   slug: string;
   date: Date;
   title: string;
-  author: Author;
+  author?: string;
   description: string;
   image: string;
-  category: string;
+  category?: string;
 }
