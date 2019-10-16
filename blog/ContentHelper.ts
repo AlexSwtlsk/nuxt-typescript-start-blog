@@ -1,5 +1,5 @@
 import { fr, en } from "./blogs.json";
-import { ArticleRaw, BlogRaw, ArticleData } from "~/types/index.js";
+import { ArticleRaw, BlogRaw, ArticleData, Article } from "~/types/index.js";
 
 export default class ContentHelper {
   private static instance: ContentHelper;
@@ -25,11 +25,24 @@ export default class ContentHelper {
       (x: ArticleRaw) => x.slug === slug
     );
     if (!articleRaw) {
-      return null
+      return null;
     }
 
     const articleData = await this.asyncImport(articleRaw.path);
     return articleData;
+  }
+
+  async getBlogsByAuthor(
+    lang: string,
+    author: string,
+    currentPage: number,
+    perPage: number
+  ): Promise<ArticleData[]> {
+    const list = await this.getArticles(lang);
+    const filtered = list.filter(
+      (x: ArticleData) => x.attributes.author === author
+    );
+    return this.getPaginated(filtered, currentPage, perPage);
   }
 
   async getBlogsByCategory(
@@ -43,6 +56,24 @@ export default class ContentHelper {
       (x: ArticleData) => x.attributes.category === category
     );
     return this.getPaginated(filtered, currentPage, perPage);
+  }
+
+  async getCategories(lang: string): Promise<string[]> {
+    const list = await this.getArticles(lang);
+    return list
+      .map(x => x.attributes.category || "untyped")
+      .filter(function(elem, pos, arr) {
+        return arr.indexOf(elem) == pos;
+      });
+  }
+
+  async getAuthors(lang: string): Promise<string[]> {
+    const list = await this.getArticles(lang);
+    return list
+      .map(x => x.attributes.author || "anonyme")
+      .filter(function(elem, pos, arr) {
+        return arr.indexOf(elem) == pos;
+      });
   }
 
   async getPaginated(
