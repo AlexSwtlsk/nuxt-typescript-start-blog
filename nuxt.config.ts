@@ -23,6 +23,7 @@ export default {
   buildModules: ["@nuxt/typescript-build"],
   modules: ["@nuxtjs/axios"],
   axios: {},
+  plugins: ['@/plugins/filters'],
   generate: {
     routes: ["404"]
       .concat(fr.map((w: ArticleRaw) => `/blog/${w.slug}`))

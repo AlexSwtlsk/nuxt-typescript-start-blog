@@ -4,7 +4,7 @@
     <nuxt-link
       :to="{name: 'blog-category-category', params: { category: blog.attributes.category }}"
     >{{ blog.attributes.category }}</nuxt-link>
-    • {{ blog.attributes.date }}
+    • {{ blog.attributes.date | formatDate("fr", "LL") }}
 
     <span v-if="blog.attributes.author">
       • by 
