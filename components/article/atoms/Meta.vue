@@ -1,13 +1,18 @@
 <template>
   <div>
     Posted on
-    <nuxt-link
-      :to="{name: 'blog-category-category', params: { category: blog.attributes.category }}"
-    >{{ blog.attributes.category }}</nuxt-link>
+    <span 
+      v-for="(category, index) in blog.attributes.categories" 
+      :key="category"
+      >
+      <span v-if="index">, </span>
+      <nuxt-link :to="{name: 'blog-category-category', params: { category }}">{{ category }}</nuxt-link>
+    </span>
+
     • {{ blog.attributes.date | formatDate("fr", "LL") }}
 
     <span v-if="blog.attributes.author">
-      • by 
+      • by
       <nuxt-link
         :to="{name: 'blog-author-author', params: { author: blog.attributes.author }}"
       >{{ blog.attributes.author }}</nuxt-link>

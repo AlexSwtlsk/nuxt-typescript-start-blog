@@ -52,28 +52,47 @@ export default class ContentHelper {
     perPage: number
   ): Promise<ArticleData[]> {
     const list = await this.getArticles(lang);
-    const filtered = list.filter(
-      (x: ArticleData) => x.attributes.category === category
+    const filtered = list.filter((x: ArticleData) =>
+      (x.attributes.categories || []).includes(category)
     );
     return this.getPaginated(filtered, currentPage, perPage);
   }
 
-  async getCategories(lang: string): Promise<string[]> {
+  async getBlogsByTag(
+    lang: string,
+    tag: string,
+    currentPage: number,
+    perPage: number
+  ): Promise<ArticleData[]> {
     const list = await this.getArticles(lang);
-    return list
-      .map(x => x.attributes.category || "untyped")
-      .filter(function(elem, pos, arr) {
-        return arr.indexOf(elem) == pos;
-      });
+    const filtered = list.filter((x: ArticleData) =>
+      (x.attributes.tags || []).includes(tag)
+    );
+    return this.getPaginated(filtered, currentPage, perPage);
+  }
+
+  async getAttrListByAttr(lang: string, attr: string): Promise<string[]> {
+    const list = await this.getArticles(lang);
+    return (
+      list
+        .map(x => x.attributes)
+        .flatMap((x: Article) => (x as any)[attr])
+        .filter(function(elem, pos, arr) {
+          return arr.indexOf(elem) == pos;
+        })
+   );
+  }
+
+  async getCategories(lang: string): Promise<string[]> {
+    return this.getAttrListByAttr(lang, "categories");
+  }
+
+  async getTags(lang: string): Promise<string[]> {
+    return this.getAttrListByAttr(lang, "tags");
   }
 
   async getAuthors(lang: string): Promise<string[]> {
-    const list = await this.getArticles(lang);
-    return list
-      .map(x => x.attributes.author || "anonyme")
-      .filter(function(elem, pos, arr) {
-        return arr.indexOf(elem) == pos;
-      });
+    return this.getAttrListByAttr(lang, "author");
   }
 
   async getPaginated(
@@ -113,6 +132,7 @@ export default class ContentHelper {
     return this.getPaginated(list, currentPage, perPage);
   }
 
+  // retourne un array d'ArticleData
   getArticles(lang: string): Promise<ArticleData[]> {
     const list = this.list[lang].sort(
       (a: ArticleRaw, b: ArticleRaw) =>
