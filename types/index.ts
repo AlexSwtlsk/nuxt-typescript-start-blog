@@ -24,5 +24,6 @@ export interface Article {
   author?: string;
   description: string;
   image: string;
-  category?: string;
+  categories?: string[];
+  tags?: string[];
 }

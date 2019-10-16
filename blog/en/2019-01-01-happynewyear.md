@@ -4,7 +4,8 @@ slug: happy-new-year
 title: Happy new year !
 description: we wish you a happy new year !
 image: https://images.unsplash.com/photo-1515995301990-280d37b2a8c9
-category: 'Design'
+categories: ['Design']
+tags: ['Voluptate', 'cillum', 'commodo']
 ---
 
 Exercitation sit consectetur anim culpa magna labore velit. In laborum occaecat aute in enim. Esse enim ut ut officia aliqua tempor sit ipsum culpa duis ea ipsum qui. Culpa cillum ad culpa qui.
