@@ -14,8 +14,12 @@ import ArticleView from "~/components/article/ArticleView.vue";
   components: {
     ArticleView
   },
-  async asyncData({ params }) {
+  async asyncData({ params, redirect }) {
     const blog = await new ContentHelper().getBlogBySlug("fr", params.name);
+    if (!blog) {
+      redirect('/')
+      return
+    }
     return { blog };
   }
 })
