@@ -5,8 +5,8 @@
 
     <div class="content" v-html="blog.html" />
 
-    <Tags
-      v-if="tags"
+    <Tags 
+      v-if="tags" 
       :blog="blog" 
     />
   </section>
@@ -28,8 +28,8 @@ export default class ArticleView extends Vue {
   @Prop() blog!: ArticleData;
 
   get tags() {
-    return !!(this.blog.attributes.tags && this.blog.attributes.tags.length)
-  } 
+    return !!(this.blog.attributes.tags && this.blog.attributes.tags.length);
+  }
 }
 </script>
 

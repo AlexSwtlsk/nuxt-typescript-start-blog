@@ -4,7 +4,7 @@
     <span 
       v-for="(tag, index) in blog.attributes.tags" 
       :key="tag"
-      >
+    >
       <span v-if="index">,</span>
       <nuxt-link :to="{name: 'blog-tag-tag', params: { tag }}">{{ tag }}</nuxt-link>
     </span>
@@ -16,7 +16,7 @@ import { Component, Prop, Vue } from "nuxt-property-decorator";
 import { ArticleData } from "~/types";
 
 @Component({})
-export default class Meta extends Vue {
+export default class Tags extends Vue {
   @Prop() blog!: ArticleData;
 }
 </script>

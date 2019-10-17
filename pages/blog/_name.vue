@@ -14,11 +14,13 @@ import ArticleView from "~/components/article/ArticleView.vue";
   components: {
     ArticleView
   },
+  layout: "blog",
+
   async asyncData({ params, redirect }) {
     const blog = await new ContentHelper().getBlogBySlug("fr", params.name);
     if (!blog) {
-      redirect('/')
-      return
+      redirect("/");
+      return;
     }
     return { blog };
   }
