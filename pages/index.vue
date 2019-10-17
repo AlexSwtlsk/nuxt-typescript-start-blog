@@ -22,6 +22,16 @@
         </nuxt-link>
       </p>
     </section>
+
+    <section>
+      <h2>Authors</h2>
+
+      <p v-for="author in authors" :key="author">
+        <nuxt-link :to="{name: 'blog-author-author', params: {author}}">
+          {{ author }}
+        </nuxt-link>
+      </p>
+    </section>
   </div>
 </template>
 
@@ -41,7 +51,8 @@ import ArticleList from "~/components/article/ArticleList.vue";
     const blogs = await new ContentHelper().getBlogsByPage("fr", 1, 9);
     const tags = await new ContentHelper().getTags("fr");
     const categories = await new ContentHelper().getCategories("fr");
-    return { blogs, tags, categories };
+    const authors = await new ContentHelper().getAuthors("fr");
+    return { blogs, tags, categories, authors };
   }
 })
 export default class extends Vue {
