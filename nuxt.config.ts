@@ -24,14 +24,22 @@ export default {
   },
   buildModules: ["@nuxt/typescript-build"],
 
-  modules: ["@nuxtjs/axios", ["nuxt-i18n", I18N]],
+  modules: [
+    "@nuxtjs/axios", 
+    ["nuxt-i18n", I18N],
+    "@nuxtjs/style-resources"
+  ],
+
+  styleResources: {
+    scss: ["~/assets/scss/main.scss"]
+  },
 
   axios: {},
 
   plugins: ["@/plugins/filters"],
 
   generate: {
-    routes: ["/404"]
+    routes: []
       .concat(fr.map((w: ArticleRaw) => `/blog/${w.slug}`))
       .concat(en.map((w: ArticleRaw) => `/en/blog/${w.slug}`))
   }
