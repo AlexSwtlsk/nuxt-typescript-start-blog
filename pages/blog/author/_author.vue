@@ -18,9 +18,9 @@ import ArticleList from "~/components/article/ArticleList.vue";
   components: {
     ArticleList
   },
-  async asyncData({ params }) {
+  async asyncData({ params, app }) {
     const blogs = await new ContentHelper().getBlogsByAuthor(
-      "fr",
+      app.i18n.locale,
       params.author,
       1,
       9

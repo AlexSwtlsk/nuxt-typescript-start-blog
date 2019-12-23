@@ -9,7 +9,7 @@
     <section>
       <h2>Tags</h2>
       <p v-for="tag in tags" :key="tag">
-        <nuxt-link :to="{name: 'blog-tag-tag', params: {tag}}">{{ tag }}</nuxt-link>
+        <nuxt-link :to="localePath({name: 'blog-tag-tag', params: {tag}})">{{ tag }}</nuxt-link>
       </p>
     </section>
 
@@ -17,7 +17,7 @@
       <h2>Categories</h2>
 
       <p v-for="category in categories" :key="category">
-        <nuxt-link :to="{name: 'blog-category-category', params: {category}}">
+        <nuxt-link :to="localePath({name: 'blog-category-category', params: {category}})">
           {{ category }}
         </nuxt-link>
       </p>
@@ -27,7 +27,7 @@
       <h2>Authors</h2>
 
       <p v-for="author in authors" :key="author">
-        <nuxt-link :to="{name: 'blog-author-author', params: {author}}">
+        <nuxt-link :to="localePath({name: 'blog-author-author', params: {author}})">
           {{ author }}
         </nuxt-link>
       </p>
@@ -47,11 +47,11 @@ import ArticleList from "~/components/article/ArticleList.vue";
   components: {
     ArticleList
   },
-  async asyncData(ctx) {
-    const blogs = await new ContentHelper().getBlogsByPage("fr", 1, 9);
-    const tags = await new ContentHelper().getTags("fr");
-    const categories = await new ContentHelper().getCategories("fr");
-    const authors = await new ContentHelper().getAuthors("fr");
+  async asyncData({ app }) {
+    const blogs = await new ContentHelper().getBlogsByPage(app.i18n.locale, 1, 9);
+    const tags = await new ContentHelper().getTags(app.i18n.locale);
+    const categories = await new ContentHelper().getCategories(app.i18n.locale);
+    const authors = await new ContentHelper().getAuthors(app.i18n.locale);
     return { blogs, tags, categories, authors };
   }
 })

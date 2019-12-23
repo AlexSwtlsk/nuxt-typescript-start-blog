@@ -16,8 +16,8 @@ import ArticleList from "~/components/article/ArticleList.vue";
     ArticleList
   },
   layout: "blog",
-  async asyncData(ctx) {
-    const categories = await new ContentHelper().getCategories("fr");
+  async asyncData({ app }) {
+    const categories = await new ContentHelper().getCategories(app.i18n.locale);
     return { categories };
   }
 })

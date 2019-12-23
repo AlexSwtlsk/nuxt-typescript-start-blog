@@ -1,6 +1,20 @@
 <template>
   <nav>
-    <button>Home</button>
+    <button @click="$router.push(localePath('index'))">Home {{ $i18n.locale}}</button>
+
+     <nuxt-link
+      v-if="$i18n.locale !== 'en'"
+      :to="switchLocalePath('en')"
+    >
+      English
+    </nuxt-link>
+    
+    <nuxt-link
+      v-if="$i18n.locale !== 'fr'"
+      :to="switchLocalePath('fr')"
+    >
+      FR
+    </nuxt-link>
   </nav>
 </template>
 

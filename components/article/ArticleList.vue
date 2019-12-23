@@ -3,7 +3,7 @@
    <nuxt-link
       v-for="b in blogs" 
       :key="b.attributes.slug"
-      :to="{name: 'blog-name', params: { name: b.attributes.slug }}"
+      :to="localePath({name: 'blog-name', params: { name: b.attributes.slug }})"
     >
       <p>
         {{ b.attributes.title }}

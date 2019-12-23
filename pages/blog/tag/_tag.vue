@@ -20,9 +20,8 @@ import ArticleList from "~/components/article/ArticleList.vue";
   },
   layout: "blog",
   
-  async asyncData({ params }) {
-    const blogs = await new ContentHelper().getBlogsByTag(
-      "fr",
+  async asyncData({ params, app }) {
+    const blogs = await new ContentHelper().getBlogsByTag(app.i18n.locale,
       params.tag,
       1,
       9

@@ -18,9 +18,9 @@ import ArticleList from "~/components/article/ArticleList.vue";
   components: {
     ArticleList
   },
-  async asyncData({ params }) {
+  async asyncData({ params, app }) {
     const blogs = await new ContentHelper().getBlogsByCategory(
-      "fr",
+      app.i18n.locale,
       params.category,
       1,
       9

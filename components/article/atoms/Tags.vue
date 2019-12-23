@@ -6,7 +6,7 @@
       :key="tag"
     >
       <span v-if="index">,</span>
-      <nuxt-link :to="{name: 'blog-tag-tag', params: { tag }}">{{ tag }}</nuxt-link>
+      <nuxt-link :to="localePath({name: 'blog-tag-tag', params: { tag }})">{{ tag }}</nuxt-link>
     </span>
   </div>
 </template>

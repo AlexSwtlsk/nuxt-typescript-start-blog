@@ -6,7 +6,7 @@
       :key="category"
       >
       <span v-if="index">, </span>
-      <nuxt-link :to="{name: 'blog-category-category', params: { category }}">{{ category }}</nuxt-link>
+      <nuxt-link :to="localePath({name: 'blog-category-category', params: { category }})">{{ category }}</nuxt-link>
     </span>
 
     • {{ blog.attributes.date | formatDate("fr", "LL") }}
@@ -14,7 +14,7 @@
     <span v-if="blog.attributes.author">
       • by
       <nuxt-link
-        :to="{name: 'blog-author-author', params: { author: blog.attributes.author }}"
+        :to="localePath({name: 'blog-author-author', params: { author: blog.attributes.author }})"
       >{{ blog.attributes.author }}</nuxt-link>
     </span>
   </div>

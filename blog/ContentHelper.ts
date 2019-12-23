@@ -40,7 +40,7 @@ export default class ContentHelper {
   ): Promise<ArticleData[]> {
     const list = await this.getArticles(lang);
     const filtered = list.filter(
-      (x: ArticleData) => x.attributes.author === author
+      (x: ArticleData) => (x.attributes.author || '').toLocaleLowerCase() === author.toLocaleLowerCase()
     );
     return this.getPaginated(filtered, currentPage, perPage);
   }
@@ -53,7 +53,7 @@ export default class ContentHelper {
   ): Promise<ArticleData[]> {
     const list = await this.getArticles(lang);
     const filtered = list.filter((x: ArticleData) =>
-      (x.attributes.categories || []).includes(category)
+      (x.attributes.categories || []).filter(cat => cat.toLocaleLowerCase().includes(category.toLocaleLowerCase()))
     );
     return this.getPaginated(filtered, currentPage, perPage);
   }
