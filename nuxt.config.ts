@@ -33,6 +33,6 @@ export default {
   generate: {
     routes: ["/404"]
       .concat(fr.map((w: ArticleRaw) => `/blog/${w.slug}`))
-      .concat(en.map((w: ArticleRaw) => `/blog/en/${w.slug}`))
+      .concat(en.map((w: ArticleRaw) => `/en/blog/${w.slug}`))
   }
 };
