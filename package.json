@@ -4,13 +4,8 @@
   "version": "2.10.0",
   "private": true,
   "dependencies": {
-    "@nuxt/typescript-runtime": "0.3.3",
-    "@nuxtjs/axios": "5.9.0",
-    "frontmatter-markdown-loader": "^3.1.0",
-    "moment": "^2.24.0",
-    "nuxt": "2.11.0",
-    "nuxt-property-decorator": "2.5.0",
-    "vuex-class": "0.3.2"
+    "@nuxt/typescript-build": "^0.5.2",
+    "nuxt": "^2.11.0"
   },
   "scripts": {
     "dev": "nuxt-ts",
@@ -20,10 +15,16 @@
     "blog": "node ./build-blog"
   },
   "devDependencies": {
-    "@nuxt/typescript-build": "0.5.2",
+    "@nuxt/typescript-runtime": "^0.3.3",
+    "@nuxtjs/axios": "^5.9.0",
     "front-matter-markdown": "^0.4.4",
+    "frontmatter-markdown-loader": "^3.1.0",
+    "moment": "^2.24.0",
     "node-sass": "^4.13.0",
     "nuxt-i18n": "^6.4.1",
-    "sass-loader": "^8.0.0"
+    "nuxt-property-decorator": "^2.5.0",
+    "sass-loader": "^8.0.0",
+    "vuex": "^3.1.2",
+    "vuex-class": "^0.3.2"
   }
 }
