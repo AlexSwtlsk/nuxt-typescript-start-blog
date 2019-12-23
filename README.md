@@ -1,24 +1,24 @@
-# nuxt-typescript-start-blog
-Nuxt Typescript template and markdown blog
+# Nuxt starter template for blogging in Markdown (and soon NetlifyCMS)
 
-## Content management
+This project is an example on how to implement a static blog in NuxtJS.
+Articles will be included to Nuxt build as static resources, which speeds up the site loading.
 
-You need to run this script every time you add or delete an article from `./blog/{en, fr, …}`.
+#static #serverless #static #blog #markdown #md #nuxt #typescript #ts
 
-This will auto-generates the `blogs.json` file which is read by `nuxt.config.ts` and the `ContentHelper.js`
+## Prerequisites to using this project
 
-
-``` bash
+```bash
 # generate json with blog slug & file path by languages
 $ npm run blog
 
 ```
 
+You need to run `build-blogs.js` script each time you add or delete an article from `./blog/{en, fr, …}`.
+This will auto-generates the `blogs.json` file which is read by `nuxt.config.ts` and the `ContentHelper.ts` which imports your article list.
 
-## Build Setup
+## Installation
 
-
-``` bash
+```bash
 # install dependencies
 $ npm install
 
@@ -26,6 +26,7 @@ $ npm install
 $ npm run dev
 
 # build for production and launch server
+$ npm run blog
 $ npm run build
 $ npm start
 
@@ -33,3 +34,11 @@ $ npm start
 $ npm run generate
 ```
 
+## TODO
+
+• Date handling : is before / is after
+• draft status
+
+## Licence
+
+CC BY-NC-SA 4.0
