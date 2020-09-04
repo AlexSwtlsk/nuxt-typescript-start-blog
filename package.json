@@ -21,7 +21,7 @@
     "front-matter-markdown": "^0.4.4",
     "frontmatter-markdown-loader": "^3.1.0",
     "moment": "^2.24.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "nuxt-i18n": "^6.4.1",
     "nuxt-property-decorator": "^2.5.0",
     "sass-loader": "^8.0.0",
